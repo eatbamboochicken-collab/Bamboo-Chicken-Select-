@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bamboo Chicken Select — Premium Experience</title>
+    <meta name="description" content="Bamboo Chicken Select: Premium customer-facing digital menu, finish-at-home dumpling experience, and online ordering platform." />
+    <meta property="og:title" content="Bamboo Chicken Select — Premium Experience" />
+    <meta property="og:description" content="Bamboo Chicken Select: Premium customer-facing digital menu, finish-at-home dumpling experience, and online ordering platform." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Pure Static CSS (Zero frameworks, zero build step) -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- Compact Sticky Header -->
+    <header class="select-header" id="main-header">
+      <div class="header-inner">
+        <a href="#home" class="brand-badge-group" id="brand-home-link" aria-label="Bamboo Chicken Select Home">
+          <span class="brand-title">
+            BAMBOO CHICKEN
+            <span class="brand-select-tag">SELECT</span>
+          </span>
+        </a>
+
+        <div class="header-nav">
+          <div class="status-pill" id="order-status-indicator" title="Kitchen Open in Harare">
+            <span class="status-dot"></span>
+            <span class="status-text">Open</span>
+          </div>
+          <button type="button" class="cart-button" id="open-cart-btn" aria-label="Open Order Bag">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+              <path d="M3 6h18"></path>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="cart-btn-label">Bag</span>
+            <span class="cart-count" id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content: Focused Exclusively on the Select Menu -->
+    <main id="main-content">
+      <div class="main-container menu-page-container">
+        
+        <!-- Rebuilt Uncluttered Hero Area -->
+        <section class="select-hero" aria-labelledby="hero-main-title">
+          <div class="hero-eyebrow-line">
+            <span class="hero-brand-tag">BAMBOO CHICKEN SELECT</span>
+            <span class="hero-dot-sep">•</span>
+            <span class="hero-location-tag">HARARE</span>
+          </div>
+          <h1 class="hero-main-title" id="hero-main-title">
+            Freshly Prepared Chicken &amp; Handcrafted Dumplings
+          </h1>
+          <p class="hero-supporting-text">
+            Hot ready-to-eat specialties and chilled 10-dumpling boxes to finish at home.
+          </p>
+        </section>
+
+        <!-- Category Filter Navigation -->
+        <nav class="menu-categories-bar" role="tablist" aria-label="Menu categories">
+          <button type="button" class="cat-filter-btn active" data-category="all" role="tab" aria-selected="true" id="filter-all">
+            All Items
+          </button>
+          <button type="button" class="cat-filter-btn" data-category="signature-meals" role="tab" aria-selected="false" id="filter-signature-meals">
+            Signature Meals
+          </button>
+          <button type="button" class="cat-filter-btn" data-category="chicken-and-more" role="tab" aria-selected="false" id="filter-chicken-and-more">
+            Chicken &amp; More
+          </button>
+          <button type="button" class="cat-filter-btn" data-category="cooked-dumplings" role="tab" aria-selected="false" id="filter-cooked-dumplings">
+            Cooked Dumplings
+          </button>
+          <button type="button" class="cat-filter-btn" data-category="finish-at-home" role="tab" aria-selected="false" id="filter-finish-at-home">
+            Finish-at-Home
+          </button>
+          <button type="button" class="cat-filter-btn" data-category="drinks-extras" role="tab" aria-selected="false" id="filter-drinks-extras">
+            Drinks &amp; Extras
+          </button>
+        </nav>
+        <div id="menu-items-list" class="menu-sections-wrapper" aria-label="Select Products Menu">
+          <!-- Dynamically organized into structured sections by js/app.js -->
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Slide-over Order Cart Drawer -->
+    <div class="cart-drawer-backdrop" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Order Cart">
+      <div class="cart-drawer">
+        <div class="cart-header">
+          <div>
+            <h2 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800;">Your Select Bag</h2>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Curated for fast delivery across Harare</p>
+          </div>
+          <button type="button" class="close-btn" id="close-cart-btn" aria-label="Close Bag">&times;</button>
+        </div>
+        <div id="cart-items-list" style="flex: 1; overflow-y: auto;">
+          <!-- Cart items list dynamically rendered -->
+        </div>
+        <div style="padding-top: 16px; border-top: 1px solid var(--border-subtle); margin-top: 16px;">
+          <!-- Bulk discount savings breakdown row -->
+          <div id="cart-discount-row" style="display: none; justify-content: space-between; align-items: center; margin-bottom: 8px;"></div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <span style="font-weight: 600; color: var(--text-muted);">Estimated Total</span>
+            <span id="cart-total-amount" style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 800;">$0.00</span>
+          </div>
+          <button type="button" id="proceed-to-checkout-btn" class="btn-proceed-checkout" aria-label="Proceed to Checkout">
+            Proceed to Checkout &rarr;
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guided Step-by-Step Checkout Modal -->
+    <div class="checkout-modal-backdrop" id="checkout-modal" role="dialog" aria-modal="true" aria-label="Checkout Process">
+      <div class="checkout-modal-container">
+        <!-- Modal Top Bar -->
+        <div class="checkout-modal-header">
+          <div class="checkout-header-left">
+            <span class="checkout-brand-badge">Select Delivery</span>
+            <h2 class="checkout-title" id="checkout-step-title">Step 1: Review Order</h2>
+          </div>
+          <button type="button" class="close-btn" id="close-checkout-btn" aria-label="Close Checkout">&times;</button>
+        </div>
+
+        <!-- Step Indicator Bar -->
+        <div class="checkout-progress-bar" id="checkout-progress-bar">
+          <div class="checkout-step-node active" data-step="1" id="step-node-1" title="Review Order">
+            <span class="step-num">1</span>
+            <span class="step-text">Review</span>
+          </div>
+          <div class="step-connector" id="conn-1-2"></div>
+          <div class="checkout-step-node" data-step="2" id="step-node-2" title="Customer Details">
+            <span class="step-num">2</span>
+            <span class="step-text">Details</span>
+          </div>
+          <div class="step-connector" id="conn-2-3"></div>
+          <div class="checkout-step-node" data-step="3" id="step-node-3" title="Delivery Confirmation">
+            <span class="step-num">3</span>
+            <span class="step-text">Delivery</span>
+          </div>
+          <div class="step-connector" id="conn-3-4"></div>
+          <div class="checkout-step-node" data-step="4" id="step-node-4" title="Payment Method">
+            <span class="step-num">4</span>
+            <span class="step-text">Payment</span>
+          </div>
+          <div class="step-connector" id="conn-4-5"></div>
+          <div class="checkout-step-node" data-step="5" id="step-node-5" title="Final Review">
+            <span class="step-num">5</span>
+            <span class="step-text">Confirm</span>
+          </div>
+        </div>
+
+        <!-- Scrollable Step Body -->
+        <div class="checkout-modal-body" id="checkout-modal-body">
+          <!-- Dynamically populated by js/app.js -->
+        </div>
+
+        <!-- Modal Bottom Actions Bar -->
+        <div class="checkout-modal-footer" id="checkout-modal-footer">
+          <!-- Back and Continue buttons rendered dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Mobile Cart Button (Inspired by reference screenshot) -->
+    <button type="button" class="floating-cart-pill" id="floating-cart-btn" style="display: none;" aria-label="View Order Bag">
+      <div class="floating-cart-icon-group">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="floating-cart-badge" id="floating-cart-badge">0</span>
+      </div>
+      <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.1;">
+        <span style="font-size: 0.7rem; color: var(--text-light-muted); font-weight: 600;">Bag</span>
+        <span class="floating-cart-total" id="floating-cart-total">$0.00</span>
+      </div>
+    </button>
+
+    <!-- Quick Toast Notification -->
+    <div id="toast-notification" style="position: fixed; bottom: 84px; right: 20px; z-index: 300; background: #121214; color: white; padding: 12px 20px; border-radius: 9999px; box-shadow: 0 10px 25px rgba(0,0,0,0.25); font-size: 0.875rem; font-weight: 600; display: none; align-items: center; gap: 8px;"></div>
+
+    <!-- Footer -->
+    <footer class="select-footer" id="select-footer">
+      <div class="footer-inner">
+        <button type="button" class="footer-model-btn" id="experience-model-btn" aria-label="Warstreet Experience Model">
+          Powered by the Warstreet Experience Model
+        </button>
+      </div>
+    </footer>
+
+    <!-- Pure Static Vanilla JavaScript (Zero build step, zero frameworks) -->
+    <script src="/js/app.js"></script>
+  </body>
+</html>
+

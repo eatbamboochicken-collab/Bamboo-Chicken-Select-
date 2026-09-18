@@ -1,0 +1,6 @@
+{
+  "name": "Bamboo Chicken Select",
+  "description": "Premium customer-facing digital menu, finish-at-home dumpling experience, and online ordering platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
